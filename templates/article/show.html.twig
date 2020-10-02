@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ article.title |raw }}</h1>
+        <img src="{{ article.image }}"/>
+        <div>{{ article.content |raw }}</div>
+
+        <a href="{{ article.link }}">See original</a>
+        <a href="{{ path('article_index') }}">back to list</a>
+
+        <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+        {{ include('article/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

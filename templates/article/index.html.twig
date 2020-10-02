@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <h1>Articles</h1>
+
+<div class="container">
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-12">
+                <h1>{{ article.title |raw }}</h1>
+                <img src="{{ article.image }}"/>
+                {% set rawcontent = article.content|striptags %}
+                <div>{{ rawcontent|length > 200 ? rawcontent|slice(0, 200 )~ '...' : rawcontent }}
+                    <a href="{{ path('article_show', {'id': article.id}) }}">Подробнее</a></div>
+
+            </div>
+        {% else %}
+        <div class="col-md-12">
+                no records found
+        </div>
+        {% endfor %}
+        <br>
+    </div>
+
+    <a href="{{ path('article_new') }}">Create new</a>
+</div>
+{% endblock %}
