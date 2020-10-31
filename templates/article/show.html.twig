@@ -8,6 +8,7 @@
         <img src="{{ article.image }}"/>
         <div>{{ article.content |raw }}</div>
 
+        {{ article.published_at|date("m/d/Y") }} в категории {{ post.category.name }}
         <a href="{{ article.link }}">See original</a>
         <a href="{{ path('article_index') }}">back to list</a>
 
