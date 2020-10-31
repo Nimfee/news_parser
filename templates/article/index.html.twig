@@ -13,7 +13,10 @@
                 <img src="{{ article.image }}"/>
                 {% set rawcontent = article.content|striptags %}
                 <div>{{ rawcontent|length > 200 ? rawcontent|slice(0, 200 )~ '...' : rawcontent }}
-                    <a href="{{ path('article_show', {'id': article.id}) }}">Подробнее</a></div>
+                    {{ article.published_at|date("m/d/Y") }} в категории {{ post.category.name }}
+
+                    <a href="{{ path('article_show', {'id': article.id}) }}">Подробнее</a>
+                </div>
 
             </div>
         {% else %}
