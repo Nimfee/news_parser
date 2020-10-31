@@ -2,13 +2,14 @@
 
 namespace App\Service\Import\Builder\Articles;
 
+use App\Service\Import\Builder\BuilderInterface;
 use App\Entity\Category;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-class BuilderService
+class BuilderService implements BuilderInterface
 {
     /** @var EntityManagerInterface  */
     protected $entityManager;
@@ -21,7 +22,7 @@ class BuilderService
 
     /**
      * ParserManager constructor.
-     * @param CategoryRepository $currencyRepository
+     * @param CategoryRepository $categoryRepository
      * @param ArticleRepository $articleRepository
      * @param EntityManagerInterface $entityManager
      */
